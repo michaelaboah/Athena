@@ -9,12 +9,20 @@
 
 import { Router, Route, Set, Private } from '@redwoodjs/router'
 
+import SubDatabasesLayout from 'src/layouts/SubDatabasesLayout'
+
 import PostsLayout from 'src/layouts/PostsLayout'
 import MainNavLayout from './layouts/MainNavLayout'
 
 const Routes = () => {
   return (
     <Router>
+      <Set wrap={SubDatabasesLayout}>
+        <Route path="/sub-databases/new" page={SubDatabaseNewSubDatabasePage} name="newSubDatabase" />
+        <Route path="/sub-databases/{id:Int}/edit" page={SubDatabaseEditSubDatabasePage} name="editSubDatabase" />
+        <Route path="/sub-databases/{id:Int}" page={SubDatabaseSubDatabasePage} name="subDatabase" />
+        <Route path="/sub-databases" page={SubDatabaseSubDatabasesPage} name="subDatabases" />
+      </Set>
       <Private unauthenticated='home'>
         <Set wrap={PostsLayout}>
           <Route path="/admin/posts/new" page={PostNewPostPage} name="newPost" />
