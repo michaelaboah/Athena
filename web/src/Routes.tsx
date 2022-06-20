@@ -16,11 +16,19 @@ const Routes = () => {
   return (
     <Router>
 
+      <Route path="/login" page={LoginPage} name="login" />
+
+      <Route path="/signup" page={SignupPage} name="signup" />
+
+      <Route path="/forgot-password" page={ForgotPasswordPage} name="forgotPassword" />
+
+      <Route path="/reset-password" page={ResetPasswordPage} name="resetPassword" />
+
       <Set wrap={PostsLayout}>
-        <Route path="/posts/new" page={PostNewPostPage} name="newPost" />
-        <Route path="/posts/{id:Int}/edit" page={PostEditPostPage} name="editPost" />
-        <Route path="/posts/{id:Int}" page={PostPostPage} name="post" />
-        <Route path="/posts" page={PostPostsPage} name="posts" />
+        <Route path="/admin/posts/new" page={PostNewPostPage} name="newPost" />
+        <Route path="/admin/posts/{id:Int}/edit" page={PostEditPostPage} name="editPost" />
+        <Route path="/admin/posts/{id:Int}" page={PostPostPage} name="post" />
+        <Route path="/admin/posts" page={PostPostsPage} name="posts" />
       </Set>
       <Set wrap={MainNavLayout}>
         <Route path="/contact" page={ContactPage} name="contact" />
