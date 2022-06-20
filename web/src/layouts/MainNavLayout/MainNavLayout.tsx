@@ -16,6 +16,9 @@ const MainNavLayout = ({ children }: MainNavLayoutProps) => {
               <Link to={routes.home()}>Home</Link>
             </li>
             <li>
+              <Link to={routes.contact()}>Contact</Link>
+            </li>
+            <li>
               <Link to={routes.about()}>About</Link>
             </li>
           </ul>
