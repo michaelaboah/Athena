@@ -12,13 +12,15 @@ generator client {
 // to create migrations for them and apply to your dev DB.
 // TODO: Please remove the following example:
 model User {
-  id                  Int       @id @default(autoincrement())
-  name                String?
-  email               String    @unique
-  hashedPassword      String
-  salt                String
-  resetToken          String?
-  resetTokenExpiresAt DateTime?
+  id                    Int                     @id @default(autoincrement())
+  name                  String?
+  email                 String                  @unique
+  hashedPassword        String
+  salt                  String
+  resetToken            String?
+  resetTokenExpiresAt   DateTime?
+  // role                  Role                    @default(MEMBER)
+  UsersJoinSubDatabases UsersJoinSubDatabases[]
 }
 
 model Post {
@@ -34,4 +36,21 @@ model Contact {
   email     String
   message   String
   createdAt DateTime @default(now())
+}
+
+model SubDatabase {
+  id                    Int                     @id @default(autoincrement())
+  name                  String
+  ownerId               Int
+  // members User[] @relation(fields: [userId], references: [id])
+  UsersJoinSubDatabases UsersJoinSubDatabases[]
+}
+
+model UsersJoinSubDatabases {
+  user          User        @relation(fields: [userId], references: [id])
+  userId        Int
+  subdatabase   SubDatabase @relation(fields: [subdatabaseId], references: [id])
+  subdatabaseId Int
+
+  @@id([userId, subdatabaseId])
 }
