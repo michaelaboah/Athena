@@ -17,6 +17,11 @@ import MainNavLayout from './layouts/MainNavLayout'
 const Routes = () => {
   return (
     <Router>
+      <Route path="/login" page={LoginPage} name="login" />
+      <Route path="/signup" page={SignupPage} name="signup" />
+      <Route path="/forgot-password" page={ForgotPasswordPage} name="forgotPassword" />
+      <Route path="/reset-password" page={ResetPasswordPage} name="resetPassword" />
+
       <Set wrap={SubDatabasesLayout}>
         <Route path="/sub-databases/new" page={SubDatabaseNewSubDatabasePage} name="newSubDatabase" />
         <Route path="/sub-databases/{id:Int}/edit" page={SubDatabaseEditSubDatabasePage} name="editSubDatabase" />
