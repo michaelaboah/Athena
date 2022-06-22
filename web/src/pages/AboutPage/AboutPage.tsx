@@ -1,18 +1,15 @@
-import { Link, routes } from '@redwoodjs/router'
+import {Heading } from "@chakra-ui/react"
 import { MetaTags } from '@redwoodjs/web'
 
 const AboutPage = () => {
   return (
     <>
       <MetaTags title="About" description="About page" />
-
-      <h1>AboutPage</h1>
+      <Heading as={"h2"} size={"md"}>About Athena</Heading>
       <p>
-        Find me in <code>./web/src/pages/AboutPage/AboutPage.tsx</code>
-      </p>
-      <p>
-        My default route is named <code>about</code>, link to me with `
-        <Link to={routes.about()}>About</Link>`
+        Athena was a capstone project created by three students in their final year.
+        Aimed at providing a centralized source for members of a communtiy to build a database for their specific needs.
+        Athena fills in a gap sorely needed.
       </p>
     </>
   )

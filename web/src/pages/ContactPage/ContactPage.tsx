@@ -51,7 +51,7 @@ const ContactPage = () => {
       <MetaTags title="Contact" description="Contact page" />
 
       <Toaster />
-      <Form
+      <Form style={{margin: "1%"}}
         onSubmit={onSubmit}
         config={{ mode: 'onBlur' }}
         error={error}

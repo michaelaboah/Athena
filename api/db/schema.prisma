@@ -42,8 +42,6 @@ model SubDatabase {
   id      Int    @id @default(autoincrement())
   name    String
   ownerId Int
-  // members User[] @relation(fields: [userId], references: [id])
-  // users UsersJoinSubDatabases[]
 }
 
 model UsersJoinSubDatabases {
