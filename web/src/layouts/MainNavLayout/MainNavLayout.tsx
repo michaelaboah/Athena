@@ -1,5 +1,6 @@
 import { Link, routes } from "@redwoodjs/router"
 import { useAuth } from '@redwoodjs/auth'
+import { Button, Wrap, Tag, Box, WrapItem, Avatar, Heading, Tab, Tabs, TabList } from '@chakra-ui/react'
 
 type MainNavLayoutProps = {
   children?: React.ReactNode
@@ -10,55 +11,67 @@ const MainNavLayout = ({ children }: MainNavLayoutProps) => {
 
   return (
     <>
-      <header>
-        <div className="flex-between">
-          <h1>
-            <Link to={routes.home()}>Redwood Blog</Link>
-          </h1>
+      <header style={{margin: "1%"}}>
+      <div className="flex-between">
+          <Heading as={"h1"} size={"xl"}>
+            <Link to={routes.home()}>Athena</Link>
+          </Heading>
           {isAuthenticated ? (
-            <div>
-              <span>Logged in as {currentUser.email}</span>{' '}
-              <button type="button" onClick={logOut}>
-                Logout
-              </button>
-            </div>
+            <>
+              <Wrap>
+                <Tag>Logged in as {currentUser.email}</Tag>{' '}
+                  <WrapItem>
+                    <Avatar name='Dan Abrahmov' src='https://bit.ly/dan-abramov' />
+                  </WrapItem>
+                  <Button type="button" onClick={logOut}>Logout</Button>
+              </Wrap>
+            </>
           ) : (
-            <Link to={routes.login()}>Login</Link>
+            <Box>
+              <Button marginRight={2}>
+                <Link to={routes.login()}>Login</Link>
+              </Button>
+              <Button>
+                <Link to={routes.signup()}>Sign Up</Link>
+              </Button>
+            </Box>
           )}
         </div>
-        <nav>
-          <ul>
-            <li>
+        <Tabs>
+          <TabList>
+            <Tab>
               <Link to={routes.home()}>Home</Link>
-            </li>
-            <li>
+            </Tab>
+            <Tab>
               <Link to={routes.about()}>About</Link>
-            </li>
-            <li>
+            </Tab>
+            <Tab>
               <Link to={routes.contact()}>Contact</Link>
-            </li>
-          </ul>
-        </nav>
-
-        <div>
-        {isAuthenticated ? (
-          <nav>
-            <ul>
-              <li>
-                <Link to={routes.posts()}>Posts</Link>
-              </li>
-              <li>
-                <Link to={routes.subDatabases()}>Databases</Link>
-              </li>
-            </ul>
-          </nav>
+            </Tab>
+            {isAuthenticated ? (
+              <>
+                <Tab>
+                  <Link to={routes.posts()}>Posts</Link>
+                </Tab>
+                <Tab>
+                  <Link to={routes.subDatabases()}>Databases</Link>
+                </Tab>
+              </>
         ): (
           <></>
         ) }
+          </TabList>
+
+
+
+        </Tabs>
+
+        <div>
+
         </div>
 
       </header>
-      <main>{children}</main>
+      <main style={{margin: "1%"}}>{children}</main>
     </>
   )
 }
