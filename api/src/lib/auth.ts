@@ -16,7 +16,7 @@ import { db } from './db'
  * client--it becomes the content of `currentUser` on the web side (as well as
  * `context.currentUser` on the api side). You should carefully add additional
  * fields to the `select` object below once you've decided they are safe to be
- * seen if someone were to open the Web Inspector in their browser.
+ * seen if someone were to open the Web Inspector in their browser
  */
 export const getCurrentUser = async (session) => {
   return await db.user.findUnique({

@@ -6,7 +6,7 @@ type MainNavLayoutProps = {
 }
 
 const MainNavLayout = ({ children }: MainNavLayoutProps) => {
-  const { isAuthenticated, userMetadata, logOut } = useAuth()
+  const { isAuthenticated, currentUser, logOut } = useAuth()
 
   return (
     <>
@@ -17,7 +17,7 @@ const MainNavLayout = ({ children }: MainNavLayoutProps) => {
           </h1>
           {isAuthenticated ? (
             <div>
-              <span>Logged in as {userMetadata.email}</span>{' '}
+              <span>Logged in as {currentUser.email}</span>{' '}
               <button type="button" onClick={logOut}>
                 Logout
               </button>
@@ -39,6 +39,24 @@ const MainNavLayout = ({ children }: MainNavLayoutProps) => {
             </li>
           </ul>
         </nav>
+
+        <div>
+        {isAuthenticated ? (
+          <nav>
+            <ul>
+              <li>
+                <Link to={routes.posts()}>Posts</Link>
+              </li>
+              <li>
+                <Link to={routes.subDatabases()}>Databases</Link>
+              </li>
+            </ul>
+          </nav>
+        ): (
+          <></>
+        ) }
+        </div>
+
       </header>
       <main>{children}</main>
     </>

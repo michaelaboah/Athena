@@ -6,8 +6,8 @@ export const schema = gql`
   }
 
   type Query {
-    subDatabases: [SubDatabase!]! @skipAuth
-    subDatabase(id: Int!): SubDatabase @skipAuth
+    subDatabases: [SubDatabase!]! @requireAuth
+    subDatabase(id: Int!): SubDatabase @requireAuth
   }
 
   input CreateSubDatabaseInput {
