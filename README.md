@@ -1,4 +1,5 @@
 # README
+This is purely for Academic Purposes
 
 Welcome to [RedwoodJS](https://redwoodjs.com)!
 
